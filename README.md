@@ -7,3 +7,5 @@ Le programme :
 - affiche le plateau (cases A1..C3),
 - gère les tours et vérifie victoire ou match nul,
 - propose de rejouer après chaque partie.
+
+A tous!

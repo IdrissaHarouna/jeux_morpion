@@ -1,6 +1,7 @@
 require_relative "board_case"
 
-
+# Classe Board : représente le plateau complet
+# Contient 9 BoardCases et gère les coups, les tours et la victoire
 class Board
   attr_accessor :cases, :turn_count
 
@@ -18,13 +19,13 @@ class Board
   POSITIONS = %w[A1 A2 A3 B1 B2 B3 C1 C2 C3].freeze
 
   def initialize
-    
+    # Création des 9 cases
     @cases = {}
     POSITIONS.each { |id| @cases[id] = BoardCase.new(id) }
     @turn_count = 0
   end
 
-  
+  # Demande au joueur où il souhaite jouer et place le symbole
   def play_turn(player)
     loop do
       print "#{player.name} (#{player.symbol}), choisis une case (ex: A1) : "
@@ -39,7 +40,8 @@ class Board
     end
   end
 
- 
+  # Vérifie si un joueur a gagné ou si c'est un match nul
+  # Retourne le symbole gagnant, "draw" ou nil
   def victory?
     WIN_COMBINATIONS.each do |combo|
       values = combo.map { |pos| @cases[pos].value }
@@ -50,3 +52,4 @@ class Board
     nil
   end
 end
+

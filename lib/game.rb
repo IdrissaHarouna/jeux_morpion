@@ -2,7 +2,7 @@ require_relative "board"
 require_relative "player"
 require_relative "show"
 
-
+# Classe Game : gère une partie complète
 class Game
   attr_accessor :board, :players, :current_player, :status
 
@@ -17,7 +17,7 @@ class Game
     @show = Show.new
   end
 
- 
+  # Un tour de jeu
   def turn
     @show.show_board(@board)
     @board.play_turn(@current_player)
@@ -33,19 +33,19 @@ class Game
     end
   end
 
- 
+  # Change de joueur
   def switch_player
     @current_player = @players.find { |p| p != @current_player }
   end
 
- 
+  # Lance un nouveau round avec les mêmes joueurs
   def new_round
     @board = Board.new
     @status = "on going"
     @current_player = @players[0]
   end
 
- 
+  # Affiche le résultat de la partie
   def game_end
     @show.show_board(@board)
     case @status

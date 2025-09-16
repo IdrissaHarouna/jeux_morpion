@@ -1,5 +1,6 @@
 require_relative "game"
 
+# Classe Application : lance le jeu et gère les parties successives
 class Application
   def perform
     puts "Bienvenue au Morpion !"
